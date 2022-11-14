@@ -2,6 +2,7 @@ mod basic;
 mod exercises;
 
 use basic::collections::collections_examples;
+use basic::conditionals::examples_of_conditionals;
 use basic::variables::examples_of_variables;
 use exercises::exercise_01::build_car;
 
@@ -9,8 +10,13 @@ use exercises::exercise_01::build_car;
 fn main() {
     // !todo explain declare variables
     examples_of_variables();
+    println!("---------------------------------------------------------------");
     // !todo explain concepts
     collections_examples();
+    println!("---------------------------------------------------------------");
     // !todo exercise-01
     build_car();
+    println!("---------------------------------------------------------------");
+    examples_of_conditionals();
+    println!("---------------------------------------------------------------");
 }

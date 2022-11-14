@@ -25,17 +25,48 @@ pub enum Age {
 
 #[allow(dead_code)]
 fn car_quality(miles: u32) -> (Age, u32) {
-    let quality: (Age, u32) = (Age::New, miles);
+    let quality: (Age, u32) = if miles == 0 {
+        (Age::New, miles)
+    } else {
+        (Age::Used, miles)
+    };
     quality
 }
 
 #[allow(dead_code)]
 pub fn car_factory(color: String, motor: Transmission, roof: bool, miles: u32) -> Car {
+    let age: (Age, u32) = car_quality(miles);
+    if age.0 == Age::Used {
+        if roof {
+            println!(
+                "Prepare a used car: {:?}, {}, Hard top, {} miles\n",
+                motor, color, miles
+            );
+        } else {
+            println!(
+                "Preparing a used car: {:?}, {}, Convertible, {} miles",
+                motor, color, miles
+            );
+        }
+    } else {
+        if roof {
+            println!(
+                "Build a new car: {:?}, {}, Hard top, {} miles\n",
+                motor, color, miles
+            );
+        } else {
+            println!(
+                "Building a new car: {:?}, {}, Convertible, {} miles",
+                motor, color, miles
+            );
+        }
+    }
+
     Car {
         color: color,
         motor: motor,
         roof: roof,
-        age: car_quality(miles),
+        age: age,
     }
 }
 
@@ -47,7 +78,7 @@ pub fn build_car() -> Car {
     let mut engine: Transmission = Transmission::Manual;
     let mut car: Car;
     // Car order #1: New, Manual, Hard top
-    car = car_factory(String::from(colors[1]), engine, true, 10000);
+    car = car_factory(String::from(colors[1]), engine, true, 0);
     println!(
         "Car order 1: {:?}, Hard top = {}, {:?}, {}, {} miles",
         car.age.0, car.roof, car.motor, car.color, car.age.1
