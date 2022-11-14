@@ -8,8 +8,8 @@ pub fn examples_of_conditionals() {
 
     println!("-----------------------------------------------------");
 
-    let formal = true;
-    let greeting = if formal {
+    let formal: bool = true;
+    let greeting: &str = if formal {
         // if used here as an expression
         "Good day to you." // return a String
     } else {
@@ -18,7 +18,7 @@ pub fn examples_of_conditionals() {
     println!("{}", greeting);
 
     println!("-----------------------------------------------------");
-    let num = 500;
+    let num: i32 = 500;
     let out_of_range: bool;
     if num < 0 {
         out_of_range = true;
