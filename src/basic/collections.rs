@@ -44,7 +44,7 @@ pub fn collections_examples() {
     println!("Vector: {:?}, three = {}", index_vec, three);
 
     // Add 5 to the value at index 1, which is 5 + 3 = 8
-    index_vec[1] = index_vec[1] + 5;
+    index_vec[1] += 5;
     println!("Vector: {:?}", index_vec);
 
     // Access vector with out-of-bounds index

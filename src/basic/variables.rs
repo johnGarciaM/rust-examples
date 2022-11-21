@@ -1,9 +1,19 @@
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Eq)]
 #[allow(dead_code)]
 pub enum PersonKind {
     Student,
     Employee,
     Profesional,
+}
+
+impl std::fmt::Debug for PersonKind {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Student => write!(f, "Student"),
+            Self::Employee => write!(f, "Employee"),
+            Self::Profesional => write!(f, "Profesional"),
+        }
+    }
 }
 
 #[allow(dead_code)]

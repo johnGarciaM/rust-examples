@@ -1,4 +1,4 @@
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Eq, Debug)]
 // Declare Car struct to describe vehicle with four named fields
 pub struct Car {
     color: String,
@@ -7,7 +7,7 @@ pub struct Car {
     age: (Age, u32),
 }
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Eq, Debug)]
 pub enum Transmission {
     Manual,
     SemiAuto,
@@ -15,7 +15,7 @@ pub enum Transmission {
 }
 
 #[allow(dead_code)]
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Eq, Debug)]
 pub enum Age {
     New,
     Used,
@@ -36,7 +36,7 @@ pub fn car_factory(order: i32, miles: u32) -> Car {
 
     let mut color = order as usize;
     if color > 4 {
-        color = color - 4;
+        color -= 4;
     }
 
     let mut motor = Transmission::Manual;
@@ -51,8 +51,8 @@ pub fn car_factory(order: i32, miles: u32) -> Car {
 
     Car {
         color: String::from(colors[(color - 1) as usize]),
-        motor: motor,
-        roof: roof,
+        motor,
+        roof,
         age: car_quality(miles),
     }
 }
@@ -70,31 +70,31 @@ pub fn build_car() {
     println!("Car order {}: {:?}", order, orders.get(&order));
 
     // Car order #2: Used, Convertible
-    order = order + 1;
+    order += 1;
     car = car_factory(order, 2000);
     orders.insert(order, car);
     println!("Car order {}: {:?}", order, orders.get(&order));
 
     // Car order #3: New, Hard top
-    order = order + 1;
+    order += 1;
     car = car_factory(order, 0);
     orders.insert(order, car);
     println!("Car order {}: {:?}", order, orders.get(&order));
 
     // Car order #4: New, Convertible
-    order = order + 1;
+    order += 1;
     car = car_factory(order, 0);
     orders.insert(order, car);
     println!("Car order {}: {:?}", order, orders.get(&order));
 
     // Car order #5: Used, Hard top
-    order = order + 1;
+    order += 1;
     car = car_factory(order, 3000);
     orders.insert(order, car);
     println!("Car order {}: {:?}", order, orders.get(&order));
 
     // Car order #6: Used, Hard top
-    order = order + 1;
+    order += 1;
     car = car_factory(order, 4000);
     orders.insert(order, car);
     println!("Car order {}: {:?}", order, orders.get(&order));

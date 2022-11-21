@@ -19,12 +19,9 @@ pub fn examples_of_conditionals() {
 
     println!("-----------------------------------------------------");
     let num: i32 = 500;
+    // trunk-ignore(clippy/needless_late_init)
     let out_of_range: bool;
-    if num < 0 {
-        out_of_range = true;
-    } else if num == 0 {
-        out_of_range = true;
-    } else if num > 512 {
+    if num < 0 && num == 0 && num > 512 {
         out_of_range = true;
     } else {
         out_of_range = false;
