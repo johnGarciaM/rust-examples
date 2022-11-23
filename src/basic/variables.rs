@@ -26,7 +26,7 @@ pub struct Person {
 }
 
 #[allow(dead_code)]
-pub fn examples_of_variables() -> Person {
+pub fn variables_examples() -> Person {
     // primitive's kinds
     let person_name: &str = "John García";
     let is_active: bool = true;

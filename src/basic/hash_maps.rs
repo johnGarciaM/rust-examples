@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 #[allow(dead_code)]
-pub fn examples_hash_maps() {
+pub fn hash_maps_examples() {
     let mut reviews: HashMap<String, String> = HashMap::new();
 
     reviews.insert(

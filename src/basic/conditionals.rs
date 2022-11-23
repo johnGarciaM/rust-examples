@@ -1,5 +1,5 @@
 #[allow(dead_code)]
-pub fn examples_of_conditionals() {
+pub fn conditionals_examples() {
     if 1 == 2 {
         println!("True, the numbers are equal."); //
     } else {
