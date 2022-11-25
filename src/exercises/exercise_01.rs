@@ -35,8 +35,9 @@ pub fn car_factory(order: i32, miles: u32) -> Car {
     let colors: [&str; 4] = ["Blue", "Green", "Red", "Silver"];
 
     let mut color = order as usize;
-    if color > 4 {
-        color -= 4;
+
+    while color > 4 {
+        color -= 4
     }
 
     let mut motor = Transmission::Manual;
@@ -60,42 +61,21 @@ pub fn car_factory(order: i32, miles: u32) -> Car {
 #[allow(dead_code)]
 pub fn build_car() {
     use std::collections::HashMap;
+    let mut miles: u32 = 0;
+    // let mut order: i32 = 1;
     let mut orders: HashMap<i32, Car> = HashMap::new();
-    let mut order: i32 = 1;
     let mut car: Car;
 
-    // Car order #1: Used, Hard top
-    car = car_factory(order, 1000);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
+    for order in 1..12 {
+        car = car_factory(order, miles);
+        orders.insert(order, car);
+        println!("Car order {}: {:?}", order, orders.get(&order));
 
-    // Car order #2: Used, Convertible
-    order += 1;
-    car = car_factory(order, 2000);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
-
-    // Car order #3: New, Hard top
-    order += 1;
-    car = car_factory(order, 0);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
-
-    // Car order #4: New, Convertible
-    order += 1;
-    car = car_factory(order, 0);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
-
-    // Car order #5: Used, Hard top
-    order += 1;
-    car = car_factory(order, 3000);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
-
-    // Car order #6: Used, Hard top
-    order += 1;
-    car = car_factory(order, 4000);
-    orders.insert(order, car);
-    println!("Car order {}: {:?}", order, orders.get(&order));
+        // Reset miles for order variety
+        if miles == 2100 {
+            miles = 0;
+        } else {
+            miles += 700;
+        }
+    }
 }
